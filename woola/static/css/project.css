@@ -32,3 +32,32 @@
   background-color: #f2dede;
   border-color: #eed3d7;
 }
+
+
+
+
+.hero {
+  padding:100px 0;
+  margin:0;
+  background-image: url("../images/banner.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color:#fff;
+}
+.hero p{
+  font-size:1.7em;
+}
+
+.navbar ul{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+.navbar ul li{
+  display:inline;
+}
+.navbar ul li a{
+  padding:10px 20px;
+  display:inline-block;
+}
