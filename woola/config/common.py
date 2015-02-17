@@ -42,6 +42,8 @@ class Common(Configuration):
         'allauth',  # registration
         'allauth.account',  # registration
         'allauth.socialaccount',  # registration
+        'retailers',
+        'core',
     )
 
     # Apps specific for this project go here.
@@ -121,9 +123,9 @@ class Common(Configuration):
             'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
             'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
         }
-    } 
-    
-    
+    }
+
+
     # END DATABASE CONFIGURATION
 
     # CACHING
