@@ -44,6 +44,8 @@ class Common(Configuration):
         'allauth.socialaccount',  # registration
         'retailers',
         'core',
+        'r_gap',
+        'r_old_navy',
     )
 
     # Apps specific for this project go here.
