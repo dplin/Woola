@@ -2,6 +2,15 @@
 
 {% block content %}
 
-<h4>Home Page</h4>
+<div class="row">
+  <div class="showcase">
+{% for record in all_retailers %}
+  <div class="large-4 columns">
+    <a href="{% url 'home' %}retailer/{{record.slug}}" class="th"><img src="{{record.retailer_image.url}}" /></a>
+    <p class="text-right"><span>42</span><i class="fa fa-heart-o"></i></p>
+  </div>
+{% endfor %}
+  </div>
+</div>
 
 {% endblock %}

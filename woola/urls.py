@@ -11,17 +11,17 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^$', include('core.urls')),
+    url(r'^$', 'core.views.index', name='home'),
     url(r'^about/$',
         TemplateView.as_view(template_name='pages/about.html'),
         name="about"),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-
     # User management
     url(r'^users/', include("users.urls", namespace="users")),
     url(r'^accounts/', include('allauth.urls')),
+    url(r'^retailer/', include('core.urls')),
 
     # Uncomment the next line to enable avatars
     url(r'^avatar/', include('avatar.urls')),

@@ -4,9 +4,6 @@ from django.conf.urls import patterns, url
 from core import views
 
 urlpatterns = patterns('',
-    url(
-        regex=r'^$',
-        view=views.index,
-        name='home'
-    ),
+
+   url(r'^(?P<slug>[\w-]+)/$', views.retailer, name='retailer'),
 )

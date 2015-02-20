@@ -48,7 +48,6 @@
 .hero p{
   font-size:1.7em;
 }
-
 .navbar ul{
   list-style-type:none;
   margin:0;
@@ -60,4 +59,45 @@
 .navbar ul li a{
   padding:10px 20px;
   display:inline-block;
+}
+main{
+  min-height:800px;
+}
+footer nav{
+  min-height:200px;
+  position:relative;
+}
+footer nav ul{
+  list-style-type:none;
+  text-align:center;
+  width:100%;
+  margin:0;
+  position:absolute;
+  bottom:0;
+  padding-bottom:30px;
+}
+footer nav ul li{
+  display:inline-block;
+}
+footer nav ul li a{
+  font-size:0.7em;
+  margin-right:15px;
+}
+footer nav ul li:last-child a{
+  margin:0;
+}
+.copyright{
+  font-size:0.6em;
+}
+
+.showcase img{
+  width:300px;
+  height:200px;
+}
+.showcase p{
+  font-size:0.8em;
+  color:#555;
+}
+.showcase i{
+  margin-left:5px;
 }

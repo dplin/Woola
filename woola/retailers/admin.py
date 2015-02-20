@@ -6,6 +6,7 @@ from retailers.models import Retailer
 # Customize Admin
 class RetailerAdmin(admin.ModelAdmin):
     list_display = ('retailer_name', 'retailer_url', 'pub_date', 'updated')
+    prepopulated_fields = {'slug': ('retailer_name',), }
 
 # Register your models here.
 models = [Retailer]
