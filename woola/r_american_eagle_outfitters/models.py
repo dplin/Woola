@@ -5,7 +5,7 @@ from django.apps import apps
 from retailers.models import CommonItemInfo
 
 class Item(CommonItemInfo):
-    _appname = 'r_gap'
+    _appname = 'r_american_eagle_outfitters'
 
     # Class properties
     _retailer_name = apps.get_app_config(_appname).retailer_name

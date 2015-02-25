@@ -12,21 +12,14 @@
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
     <!-- Latest compiled and minified Foundation CSS -->
     <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
-
     <!-- Your stuff: Third-party css libraries go here -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
     <!-- This file store project specific CSS -->
     <link href="{% static 'css/project.css' %}" rel="stylesheet">
     {% endblock %}
 
     <!-- Your stuff: Third-party javascript libraries go here -->
     <script src="{% static 'js/vendor/modernizr.js' %}"></script>
-
-    {% block angular %}
-      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-    {% endblock %}
-
   </head>
 
   <body>
@@ -108,13 +101,22 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    {% block javascript %}
+    {% block jquery %}
       <!-- Latest JQuery -->
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    {% endblock %}
 
-      <!-- Latest compiled and minified JavaScript -->
+    {% block angular %}
+      <!-- Latest AngularJS -->
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    {% endblock %}
+
+    {% block foundation %}
+      <!-- Latest minified Foundation javascript -->
       <script src="{% static 'js/foundation.min.js' %}"></script>
+    {% endblock %}
 
+    {% block javascript %}
       <!-- Your stuff: Third-party javascript libraries go here -->
 
       <!-- place project specific Javascript in this file -->

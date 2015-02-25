@@ -1,0 +1,1 @@
+default_app_config = 'r_american_eagle_outfitters.apps.AmericanEagleOutfittersConfig'

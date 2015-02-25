@@ -1,16 +1,16 @@
 {% extends 'core\base.html' %}
-
+{% load staticfiles i18n %}
 {% block content %}
 
 <div class="row">
   <div class="showcase">
-{% for record in all_retailers %}
+  {{ hi }}
+{% for retailer in retailers %}
   <div class="large-4 columns">
-    <a href="{% url 'home' %}retailer/{{record.slug}}" class="th"><img src="{{record.retailer_image.url}}" /></a>
+    <a href="{% url 'home' %}retailer/{{retailer.retailer_slug}}" class="th"><img src="{% static retailer.retailer_logo_url %}" /></a>
     <p class="text-right"><span>42</span><i class="fa fa-heart-o"></i></p>
   </div>
 {% endfor %}
   </div>
 </div>
-
 {% endblock %}

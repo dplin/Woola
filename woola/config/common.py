@@ -44,8 +44,6 @@ class Common(Configuration):
         'allauth.socialaccount',  # registration
         'retailers',
         'core',
-        'r_gap',
-        'r_old_navy',
     )
 
     # Apps specific for this project go here.
@@ -54,8 +52,16 @@ class Common(Configuration):
         # Your stuff: custom apps go here
     )
 
+    # Retailer Apps
+    RETAILER_APPS = (
+        'r_gap',
+        #'r_old_navy',
+        'r_banana_republic',
+        'r_american_eagle_outfitters',
+    )
+
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-    INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+    INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS + RETAILER_APPS
     # END APP CONFIGURATION
 
     # MIDDLEWARE CONFIGURATION
