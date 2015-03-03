@@ -1,0 +1,91 @@
+{% extends 'core\base.html' %}
+{% load staticfiles i18n %}
+
+{% block content %}
+<div ng-controller="gapController" ng-cloak>
+    <div class="row">
+      <h1>{{ retailer.retailer_name }}</h1>
+    </div>
+    <form role="form">
+      <div class="row">
+        <div class="columns large-6">
+          <label for="item_name">Item name</label>
+          <input type="text" placeholder="" ng-model="reta.item_name" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns large-6">
+          <label for="item_id">Item ID</label>
+          <input type="text" placeholder="" ng-model="reta.item_id" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns large-6">
+          <label for="item_url">Item URL</label>
+          <input type="text" placeholder="" ng-model="reta.item_url" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns large-6">
+          <label for="item_price">Item Price</label>
+          <input type="text" placeholder="" ng-model="reta.item_price" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns large-6">
+          <label for="item_image">Item Image</label>
+          <input type="text" placeholder="" ng-model="reta.item_image" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns large-6">
+          <a class="button" ng-click="saveItem()">Submit</a>
+        </div>
+      </div>
+    </form>
+    <form role="form">
+      <div class="row">
+        <div class="columns large-6">
+          <label for="test_url">Test URL</label>
+          <input type="text" placeholder="" id="test_url" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns large-6">
+          <a href="#" class="button crawler">Boom!</a>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="columns large-12">
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns large-12">
+        <table>
+          <tr>
+            <th>Item Name</th>
+            <th>Item ID</th>
+            <th>Item Price</th>
+            <th></th>
+          </tr>
+          <tr ng-repeat="(index, item) in items">
+            <td>{$ item.item_name $}</td>
+            <td>{$ item.item_id $}</td>
+            <td>{$ item.item_price $}</td>
+            <td><a ng-click="deleteItem(item, index)">Delete</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block angular_app %}
+    <!-- AngularJS Retailer App files -->
+    <script src="{% static 'r_gap/app/js/apps/gapApp.js' %}"></script>
+    <script src="{% static 'r_gap/app/js/controllers/gapControllers.js' %}"></script>
+    <script src="{% static 'r_gap/app/js/services/gapServices.js' %}"></script>
+{% endblock %}

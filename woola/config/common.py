@@ -44,6 +44,7 @@ class Common(Configuration):
         'allauth.socialaccount',  # registration
         'retailers',
         'core',
+        'rest_framework',
     )
 
     # Apps specific for this project go here.
@@ -56,8 +57,8 @@ class Common(Configuration):
     RETAILER_APPS = (
         'r_gap',
         #'r_old_navy',
-        'r_banana_republic',
-        'r_american_eagle_outfitters',
+        #'r_banana_republic',
+        #'r_american_eagle_outfitters',
     )
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -291,3 +292,5 @@ class Common(Configuration):
         cls.DATABASES['default']['ATOMIC_REQUESTS'] = True
 
     # Your common stuff: Below this line define 3rd party library settings
+
+

@@ -101,3 +101,8 @@ footer nav ul li:last-child a{
 .showcase i{
   margin-left:5px;
 }
+
+/* Hide the ugly AngularJS template markup flickering */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}

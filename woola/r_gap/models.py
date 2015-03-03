@@ -3,7 +3,12 @@ from django.db import models
 from django.apps import apps
 # Inherit common fields
 from retailers.models import CommonItemInfo
+# Make sure Unicode is compatible
+from django.utils.encoding import python_2_unicode_compatible
+# App ViewSet. For REST API URL auto generation.
 
+
+@python_2_unicode_compatible
 class Item(CommonItemInfo):
     _appname = 'r_gap'
 
@@ -12,9 +17,15 @@ class Item(CommonItemInfo):
     _retailer_logo_url = apps.get_app_config(_appname).retailer_logo_url
     _retailer_slug = apps.get_app_config(_appname).slug
 
+    #_retailer_viewset = import .views.GapViewSet
+
     # This field requires current appname as path
-    item_image = models.ImageField(upload_to = 'retailer/'+_appname, default = 'retailer/_appname/no-img.jpg')
+    item_image = models.URLField(max_length=500, default="abc.jpg")
 
     def __str__(self):
         # Return self
         return apps.get_app_config(_appname).retailer_name
+
+    class Meta:
+        # default ordering when obtaining lists of objects
+        ordering = ['pub_date']

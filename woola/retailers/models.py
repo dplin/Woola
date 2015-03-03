@@ -18,12 +18,17 @@ class classproperty(property):
         return classmethod(self.fget).__get__(instance, cls)()
 
 class CommonItemInfo(models.Model):
-    item_name = models.CharField(max_length=120, null=False, blank=False)
-    item_title = models.CharField(max_length=120, null=False, blank=False)
-    item_id = models.CharField(max_length=200, null=False, blank=False)
-    item_url = models.URLField(max_length=500, null=False, blank=False)
+    item_name = models.CharField(max_length=120, null=True, blank=False)
+    item_price = models.DecimalField(max_digits=6, null=True, decimal_places=2)
+    item_id = models.CharField(max_length=200, null=True, blank=False)
+    item_url = models.URLField(max_length=500, null=True, blank=False)
     pub_date = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    @classproperty
+    def app_name(self):
+        # Return retailer name
+        return self._appname
 
     @classproperty
     def retailer_name(self):
