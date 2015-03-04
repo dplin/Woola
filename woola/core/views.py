@@ -62,6 +62,8 @@ def retailer(request, slug):
 Crawler function to get item information from retailer website. Probably should put it into each Retailer app.....................since every site is a bit different......
 """
 import requests
+import re
+import sys
 from bs4 import BeautifulSoup
 
 class Crawler():
@@ -88,12 +90,58 @@ class Monk(Crawler):
 
 @csrf_protect
 def crawler(request):
-    cr = Monk(request.GET['url'])
-    soup = cr.get_soup()
-    cr.find_by_class(soup, 'a')
+    # Initialize variables
+    product_id = None
+    product_title = None
+    product_org_price = None
+    product_sale_price = None
+    product_image_url = None
+    product_exist = False
 
 
+    try:
+      # Set Product ID
+      search_product_id = re.findall(r"pid=\d\d\d\d\d\d", request.GET['url'])
+      if search_product_id:
+        product_id = search_product_id[0].split('=')[1]
+      else:
+        return HttpResponse(json.dumps({'product_exist': product_exist, 'error_msg': 'Invalid product ID'}), content_type='application/json')
+      """
+      Scrap html source code
+      """
+      # Set Product title
+      soup = BeautifulSoup(requests.get(request.GET['url']).text)
+      product_title = soup.find('title').get_text().split("|")[0].strip()
 
 
-    data = {'foo': request.GET['url'], 'hello': 'dddd'}
+      """
+      Scrap Javascript API call response
+      """
+      # API call URL
+      url = "http://bananarepublic.gapcanada.ca/browse/productData.do?pid=" + product_id + "&vid=1&locale=en_CA"
+
+      # Get source data
+      data = requests.get(url).text
+
+      # Set image URL
+      product_image_url = 'http://bananarepublic.gapcanada.ca' + re.findall(r"P01': '([^']+)", data)[0]
+
+      # Set original price
+      soup = BeautifulSoup(data)
+      product_org_price = soup.find('span', {'class':'priceDisplay'}).get_text().replace('CA$', '')
+
+      # Set sale price
+      product_sale_price = soup.find('span', {'class':'priceDisplaySale'})
+      if product_sale_price:
+        product_sale_price = product_sale_price.get_text().replace('CA$', '')
+        product_org_price = product_org_price.split("-")[1]
+
+      product_exist = True
+
+      data = {'product_id': product_id, 'product_title': product_title, 'product_org_price': product_org_price, 'product_sale_price': product_sale_price, 'product_image_url': product_image_url, 'product_exist': product_exist}
+    except:
+      # Error message
+      e = sys.exc_info()[0]
+      return HttpResponse(json.dumps({'product_exist': product_exist, 'error_msg': e}), content_type='application/json')
+
     return HttpResponse(json.dumps(data), content_type='application/json')
