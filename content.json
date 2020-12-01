@@ -1,6 +1,6 @@
 {
-  "custom-field": "Hello",
-  "custom-object": {
+  "h1": "Hello",
+  "what-the": {
     "custom-line": "what is this",
     "custom-text": "hello world"
   },
