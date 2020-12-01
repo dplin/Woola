@@ -3,5 +3,13 @@
   "custom-object": {
     "custom-line": "what is this",
     "custom-text": "hello world"
-  }
+  },
+  "custom-list": [
+    {
+      "custom-list-item": "assefef"
+    },
+    {
+      "custom-list-item": "Hello ssdf"
+    }
+  ]
 }
